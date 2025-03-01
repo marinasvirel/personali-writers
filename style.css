@@ -112,10 +112,6 @@ ul {
   list-style-position: inside;
 }
 
-svg path {
-  fill: var(--basic);
-}
-
 .writers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -208,7 +204,8 @@ button:hover,
   background-color: #daad74;
 }
 
-input {
+input,
+textarea {
   width: 100%;
   display: block;
   font-family: "Roboto-Regular";
@@ -223,8 +220,13 @@ input {
   margin-bottom: 15px;
 }
 
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   color: #51301373;
+}
+
+input [aria-invalid="true"]{
+  background-color: red;
 }
 
 .field-container {
@@ -278,7 +280,8 @@ label {
 @media(max-width: 420px) {
   body,
   input,
-  form button {
+  form button,
+  label {
     font-size: 15px;
   }
 
@@ -299,7 +302,7 @@ label {
     font-size: 18px;
   }
 
-  footer svg {
+  footer img {
     display: none;
   }
 
