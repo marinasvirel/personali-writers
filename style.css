@@ -162,7 +162,7 @@ ul {
   margin-bottom: 15px;
 }
 
-form{
+form {
   max-width: 500px;
 }
 
@@ -194,13 +194,13 @@ button[type="button"] {
   margin-left: 10px;
 }
 
-#addFieldBtn {
+#addWorkBtn {
   background-color: white;
   border: 1px dashed var(--basic);
 }
 
 button:hover,
-#addFieldBtn:hover {
+#addWorkBtn:hover {
   background-color: #daad74;
 }
 
@@ -220,16 +220,49 @@ textarea {
   margin-bottom: 15px;
 }
 
+.date-wrapper {
+  display: flex;
+  align-items: center;
+  font-family: "Roboto-Regular";
+  border-bottom: 1px solid rgba(105, 69, 37, 0.51);
+  border-radius: 5px;
+  margin-bottom: 15px;
+  background-color: white;
+  padding: 10px;
+  color: #51301373;
+}
+
+.date-wrapper p {
+  min-width: 145px;
+  display: block;
+  margin-right: 10px;
+}
+
+.date-wrapper input {
+  margin: 0;
+  padding: 0;
+  padding-left: 3px;
+  border-bottom: none;
+  /* border-left: 1px solid rgba(105, 69, 37, 0.51); */
+  border-radius: 0;
+}
+
 input::placeholder,
 textarea::placeholder {
   color: #51301373;
 }
 
-input [aria-invalid="true"]{
-  background-color: red;
+.info-span {
+  display: block;
+  font-size: 12px;
+  color: red;
 }
 
-.field-container {
+.info-span-valid {
+  color: green;
+}
+
+.work-container{
   display: flex;
 }
 
@@ -248,7 +281,7 @@ label {
   overflow: hidden;
 }
 
-#file{
+#file {
   position: absolute;
   width: .1px;
   height: .1px;
@@ -278,6 +311,7 @@ label {
 }
 
 @media(max-width: 420px) {
+
   body,
   input,
   form button,
@@ -312,5 +346,9 @@ label {
 
   footer {
     margin-top: 30px;
+  }
+
+  .date-wrapper p {
+    min-width: 109px;
   }
 }
