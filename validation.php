@@ -54,3 +54,52 @@ function validFile()
   }
   return $result;
 }
+
+function validWork()
+{
+  $result = "";
+  $pattern = '#^[А-ЯЁ][а-яё][а-яёА-ЯЁ\-\?\!\.\, ]*$#u';
+  $condition = "Только буквы кириллические. Строка начинается с прописной буквы. Не менее двух символов. Допускаются пробелы, дефисы, точки, запятые, восклицательный и вопросительный знак";
+  if (isset($_POST['works'])) {
+    $variable = $_POST['works'];
+    $arr = [];
+    foreach ($variable as $key => $value) {
+      if (preg_match($pattern, $value) == 0) {
+        $arr[] = $condition;
+      } else {
+        $arr[] = "ok";
+      }
+    }
+    if (in_array($condition, $arr)) {
+      $result = $condition;
+    } else {
+      $result = "<span class='info-span-valid'>&#10004;</span>";
+    }
+  }
+  return $result;
+}
+
+$name_span = validName('name');
+$surname_span = validName('surname');
+$patronymic_span = validName('patronymic');
+$date_birth_span = validDate("date-birth");
+$date_died_span = validDate("date-died");
+$file_span = validFile();
+$biography_span = validBiograhy("biography");
+$works_span = validWork();
+
+$fields = [
+  $name_span,
+  $surname_span,
+  $patronymic_span,
+  $date_birth_span,
+  $date_died_span,
+  $file_span,
+  $biography_span,
+  $works_span,
+];
+
+$valid = false;
+if (count(array_unique($fields)) == 1 and $fields[0] == "<span class='info-span-valid'>&#10004;</span>") {
+  $valid = true;
+}

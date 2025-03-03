@@ -16,7 +16,7 @@
     </div>
   </header>
   <main>
-    <div class="container"><?php require_once "info.php";?></div>
+    <div class="container"><?php require_once "writers.php";?></div>
   </main>
   <footer class="edge">
     <div class="container">

@@ -1,35 +1,54 @@
 <?php
-require_once "functions.php";
+require_once "validation.php";
+require_once "db.php";
 
-function validWork(){}
 
-$name_span = validName('name');
-$surname_span = validName('surname');
-$patronymic_span = validName('patronymic');
-$date_birth_span = validDate("date-birth");
-$date_died_span = validDate("date-died");
-$file_span = validFile();
-$biography_span = validBiograhy("biography");
+if ($valid == true) {
+  if (isset($_POST['public'])) {
+    $name = $_POST['name'];
+    $surname = $_POST['surname'];
+    $patronymic = $_POST['patronymic'];
+    $date_birth = $_POST['date-birth'];
+    $date_died = $_POST['date-died'];
+    $biography = $_POST['biography'];
+    $works = implode('; ', $_POST['works']);
 
-// var_dump();
+    $query = "INSERT INTO `writers`(`name`, `surname`, `patronymic`, `date-birth`, `date-died`, `file`, `biography`, `works`) VALUES ('$name', '$surname', '$patronymic', '$date_birth', '$date_died', 'file', '$biography', '$works')";
+    mysqli_query($link, $query);
+  }
+}
+
+
+
+//var_dump($_POST['date-birth']);
 ?>
 <h2>Информация о писателе</h2>
 <form class="info" action="" method="post" enctype="multipart/form-data">
   <span class="info-span"><?= $name_span ?></span>
-  <input type="text" name="name" placeholder="Имя">
+  <input type="text" name="name" placeholder="Имя" value="<?php if (isset($_POST['name'])) {
+                                                            echo $_POST['name'];
+                                                          } ?>">
   <span class="info-span"><?= $surname_span ?></span>
-  <input type="text" name="surname" placeholder="Фамилия">
+  <input type="text" name="surname" placeholder="Фамилия" value="<?php if (isset($_POST['surname'])) {
+                                                                    echo $_POST['surname'];
+                                                                  } ?>">
   <span class="info-span"><?= $patronymic_span ?></span>
-  <input type="text" name="patronymic" placeholder="Отчество">
+  <input type="text" name="patronymic" placeholder="Отчество" value="<?php if (isset($_POST['patronymic'])) {
+                                                                        echo $_POST['patronymic'];
+                                                                      } ?>">
   <span class="info-span"><?= $date_birth_span ?></span>
   <div class="date-wrapper">
     <p>Дата&nbsp;рождения:</p>
-    <input type="date" name="date-birth" id="date-birth">
+    <input type="date" name="date-birth" id="date-birth" value="<?php if (isset($_POST['date-birth'])) {
+                                                                  echo $_POST['date-birth'];
+                                                                } ?>">
   </div>
   <span class="info-span"><?= $date_died_span ?></span>
   <div class="date-wrapper">
     <p>Дата&nbsp;смерти:</p>
-    <input type="date" name="date-died" id="">
+    <input type="date" name="date-died" id="" value="<?php if (isset($_POST['date-died'])) {
+                                                        echo $_POST['date-died'];
+                                                      } ?>">
   </div>
   <span class="info-span"><?= $file_span ?></span>
   <div class="file-container">
@@ -39,12 +58,13 @@ $biography_span = validBiograhy("biography");
   <span class="info-span"><?= $biography_span ?></span>
   <textarea name="biography" id="" placeholder="Биография"></textarea>
   <div id="workList">
+    <span class="info-span"><?= $works_span ?></span>
     <div class="work-container">
-      <input type="text" name="works[]" placeholder="Произведение" required>
+      <input type="text" name="works[]" placeholder="Произведение">
     </div>
   </div>
   <button type="button" id="addWorkBtn">Добавить произведение</button>
-  <button type="submit">Опубликовать</button>
+  <button type="submit" name="public">Опубликовать</button>
 </form>
 
 <script>
