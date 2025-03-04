@@ -1,4 +1,5 @@
 <?php
+
 require_once "db.php";
 
 function select_writers($link)
@@ -10,14 +11,3 @@ function select_writers($link)
 }
 
 $writers = select_writers($link);
-
-// echo "<pre>";
-// print_r($writers);
-?>
-
-<h1>Биографии писателей</h1>
-<ul class="writers">
-  <?php foreach ($writers as $key => $value): ?>
-    <li><?= "{$value['name']}&nbsp;{$value['surname']}" ?></li>
- <?php endforeach; ?>
-</ul>

@@ -1,29 +1,26 @@
 <!DOCTYPE html>
 <html lang="ru">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="img/favicon.png" type="image/png">
-  <title>Биографии писателей</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+<?php
+require_once "base/head.php";
+?>
 
 <body>
-  <header class="edge">
-    <div class="container">
-      <img src="img/logo.png" alt="logo">
-    </div>
-  </header>
+  <?php require_once "base/header.php" ?>
   <main>
-    <div class="container"><?php require_once "writers.php";?></div>
-  </main>
-  <footer class="edge">
     <div class="container">
-      <p class="copyright">Зинченко Марина © 2025</p>
-      <img src="img/logo.png" alt="logo">
+      <?php require_once "writers-table.php";?>
+      <h1>Биографии писателей</h1>
+      <ul class="writers">
+        <?php foreach ($writers as $key => $value): ?>
+          <li>
+            <?= "{$value['name']}&nbsp;{$value['surname']}" ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
     </div>
-  </footer>
+  </main>
+  <?php require_once "base/footer.php" ?>
 
 </body>
 
