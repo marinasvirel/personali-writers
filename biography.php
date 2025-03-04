@@ -1,10 +1,7 @@
 <?php
-require_once "db.php";
+require_once "writers-table.php";
 
-$id = $_GET['id'];
-$query = "SELECT * FROM writers WHERE `id`= '$id'";
-$res = mysqli_query($link, $query);
-$writer = mysqli_fetch_assoc($res);
+$writer = selectById($link);
 
 ?>
 

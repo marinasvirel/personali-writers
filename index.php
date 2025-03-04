@@ -13,12 +13,11 @@ require_once "base/head.php";
       <h1>Биографии писателей</h1>
       <ul class="writers">
         <?php foreach ($writers as $key => $value): ?>
-          <li>
-            <a href='biography.php?id=<?= "{$value['id']}" ?>'>
+          <a class="get-biography" href='biography.php?id=<?= "{$value['id']}" ?>'>
+            <li>
               <?= "{$value['name']}&nbsp;{$value['surname']}" ?>
-            </a>
-
-          </li>
+            </li>
+          </a>
         <?php endforeach; ?>
       </ul>
     </div>
