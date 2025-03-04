@@ -9,12 +9,15 @@ require_once "base/head.php";
   <?php require_once "base/header.php" ?>
   <main>
     <div class="container">
-      <?php require_once "writers-table.php";?>
+      <?php require_once "writers-table.php"; ?>
       <h1>Биографии писателей</h1>
       <ul class="writers">
         <?php foreach ($writers as $key => $value): ?>
           <li>
-            <?= "{$value['name']}&nbsp;{$value['surname']}" ?>
+            <a href='biography.php?id=<?= "{$value['id']}" ?>'>
+              <?= "{$value['name']}&nbsp;{$value['surname']}" ?>
+            </a>
+
           </li>
         <?php endforeach; ?>
       </ul>
