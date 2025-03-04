@@ -11,8 +11,12 @@ if ($valid == true) {
   $date_died = $_POST['date-died'];
   $biography = $_POST['biography'];
   $works = implode('; ', $_POST['works']);
+  $file = $_FILES['file']['name'];
+  $tmp_file = $_FILES['file']['tmp_name'];
 
-  $query = "INSERT INTO `writers`(`name`, `surname`, `patronymic`, `date-birth`, `date-died`, `file`, `biography`, `works`) VALUES ('$name', '$surname', '$patronymic', '$date_birth', '$date_died', 'file', '$biography', '$works')";
+  move_uploaded_file($tmp_file, "uploads/$file");
+
+  $query = "INSERT INTO `writers`(`name`, `surname`, `patronymic`, `date-birth`, `date-died`, `file`, `biography`, `works`) VALUES ('$name', '$surname', '$patronymic', '$date_birth', '$date_died', '$file', '$biography', '$works')";
   mysqli_query($link, $query);
   header('Location: /');
 }
