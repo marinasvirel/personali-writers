@@ -1,7 +1,7 @@
 <?php
 require_once "writers-table.php";
 ?>
-
+<a href="create.php">Добавить писателя</a>
 <table>
   <th>id</th>
   <th>Имя</th>
