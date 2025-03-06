@@ -2,13 +2,14 @@
 require_once "validation.php";
 require_once "db.php";
 
+$name = $_POST['name'] ?? "";
+$surname = $_POST['surname'] ?? "";
+$patronymic = $_POST['patronymic'] ?? "";
+$date_birth = $_POST['date-birth'] ?? "";
+$date_died = $_POST['date-died'] ?? "";
+$biography = $_POST['biography']?? "";
+
 if ($valid == true) {
-  $name = $_POST['name'];
-  $surname = $_POST['surname'];
-  $patronymic = $_POST['patronymic'];
-  $date_birth = $_POST['date-birth'];
-  $date_died = $_POST['date-died'];
-  $biography = $_POST['biography'];
   $works = implode('; ', $_POST['works']);
   $file = $_FILES['file']['name'];
   $tmp_file = $_FILES['file']['tmp_name'];
@@ -35,20 +36,20 @@ require_once "base/head.php";
       <h2>Информация о писателе</h2>
       <form class="info" action="" method="post" enctype="multipart/form-data">
         <span class="info-span"><?= $name_span ?></span>
-        <input type="text" name="name" placeholder="Имя">
+        <input type="text" name="name" placeholder="Имя" value="<?= $name ?>">
         <span class="info-span"><?= $surname_span ?></span>
-        <input type="text" name="surname" placeholder="Фамилия">
+        <input type="text" name="surname" placeholder="Фамилия" value="<?= $surname ?>">
         <span class="info-span"><?= $patronymic_span ?></span>
-        <input type="text" name="patronymic" placeholder="Отчество">
+        <input type="text" name="patronymic" placeholder="Отчество" value="<?= $patronymic ?>">
         <span class="info-span"><?= $date_birth_span ?></span>
         <div class="date-wrapper">
           <p>Дата&nbsp;рождения:</p>
-          <input type="date" name="date-birth" id="date-birth">
+          <input type="date" name="date-birth" id="date-birth" value="<?= $date_birth ?>">
         </div>
         <span class="info-span"><?= $date_died_span ?></span>
         <div class="date-wrapper">
           <p>Дата&nbsp;смерти:</p>
-          <input type="date" name="date-died" id="">
+          <input type="date" name="date-died" id="" value="<?= $date_died ?>">
         </div>
         <span class="info-span"><?= $file_span ?></span>
         <div class="file-container">
@@ -56,7 +57,7 @@ require_once "base/head.php";
           <label for="file" id="for-file">Изображение писателя</label>
         </div>
         <span class="info-span"><?= $biography_span ?></span>
-        <textarea name="biography" id="" placeholder="Биография"></textarea>
+        <textarea name="biography" id="" placeholder="Биография"><?= $biography ?></textarea>
         <div id="workList">
           <span class="info-span"><?= $works_span ?></span>
           <div class="work-container">
