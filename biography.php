@@ -22,7 +22,13 @@ require_once "base/head.php";
             <img class="biography-photo" src="uploads/<?= $writer['file'] ?>" alt="biography-photo">
           </div>
           <h2><?= "{$writer['name']} {$writer['patronymic']} {$writer['surname']}" ?></h2>
-          <p class="biography-date">1895 — 1925гг.</p>
+          <p class="biography-date">
+            <?php 
+            $date_birth = mb_substr($writer['date-birth'], 0, 4);
+            $date_died = mb_substr($writer['date-died'], 0, 4);
+            echo "{$date_birth}—{$date_died}гг";
+            ?>
+          </p>
         </div>
         <div class="biography-text">
           <?= $writer['biography'] ?>

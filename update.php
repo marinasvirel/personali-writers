@@ -3,8 +3,6 @@ require_once "writers-table.php";
 
 $writer = selectById($link);
 
-
-
 if (isset($_POST['update'])) {
   $id = $_GET['id'];
 
