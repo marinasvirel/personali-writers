@@ -19,19 +19,23 @@ require_once "base/head.php";
       <div class="biography">
         <div class="biography-base">
           <div class="biography-photo-frame">
-            <img class="biography-photo" src="img/esenin.jpg" alt="biography-photo">
+            <img class="biography-photo" src="uploads/<?= $writer['file'] ?>" alt="biography-photo">
           </div>
           <h2><?= "{$writer['name']} {$writer['patronymic']} {$writer['surname']}" ?></h2>
           <p class="biography-date">1895 — 1925гг.</p>
         </div>
         <div class="biography-text">
-        <?= $writer['biography'] ?>
+          <?= $writer['biography'] ?>
         </div>
       </div>
       <h3>Произведения</h3>
       <ul class="works">
-        <li>«Алый мрак в небесной черни...»</li>
-        <li>Бабушкины сказки («В зимний вечер по задворкам...»)</li>
+        <?php
+        $works = explode("; ", $writer['works']);
+        foreach ($works as $key => $value) {
+          echo "<li>«{$value}»</li>";
+        }
+        ?>
       </ul>
     </div>
   </main>

@@ -1,23 +1,10 @@
-<!DOCTYPE html>
-<html lang="ru">
-
 <?php
-require_once "base/head.php";
-?>
+if (isset($_POST['login']) and isset($_POST['password'])) {
+  $login = $_POST['login'];
+  $password = $_POST['password'];
 
-<body>
-  <?php require_once "base/header.php" ?>
-  <main>
-    <div class="container">
-      <form class="auth" action="" method="post">
-        <input type="text" name="login" placeholder="Логин">
-        <input type="password" name="password" placeholder="Пароль">
-        <button type="submit">Войти</button>
-      </form>
-    </div>
-  </main>
-  <?php require_once "base/footer.php" ?>
-
-</body>
-
-</html>
+  if ($login == "admin" and $password == "root") {
+    setcookie('login', $login, 0, '/');
+    header("Location: admin.php");
+  }
+}

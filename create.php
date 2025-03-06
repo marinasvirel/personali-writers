@@ -2,7 +2,6 @@
 require_once "validation.php";
 require_once "db.php";
 
-
 if ($valid == true) {
   $name = $_POST['name'];
   $surname = $_POST['surname'];
