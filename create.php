@@ -17,7 +17,7 @@ if ($valid == true) {
 
   $query = "INSERT INTO `writers`(`name`, `surname`, `patronymic`, `date-birth`, `date-died`, `file`, `biography`, `works`) VALUES ('$name', '$surname', '$patronymic', '$date_birth', '$date_died', '$file', '$biography', '$works')";
   mysqli_query($link, $query);
-  header('Location: /');
+  header('Location: admin.php');
 }
 ?>
 

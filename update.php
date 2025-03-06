@@ -18,7 +18,7 @@ if (isset($_POST['update'])) {
 
   $query = "UPDATE writers SET `name`= '$name', `surname`= '$surname', `patronymic`= '$patronymic', `date-birth`= '$date_birth', `date-died`= '$date_died', `biography`= '$biography', `works`= '$works' WHERE `id` = '$id'";
   $res = mysqli_query($link, $query);
-  header('Location: /');
+  header('Location: admin.php');
 }
 ?>
 
